@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:25:11 by kosnakam          #+#    #+#             */
-/*   Updated: 2024/07/24 14:52:19 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:07:12 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ typedef struct s_cmd
 
 // tokenizer.c
 t_token			*tokenize(char *line);
-bool			is_valid_identifier(char *str);
 int				get_word_len(char *line);
 
 // token_list.c
@@ -191,7 +190,6 @@ int				is_quote(char c);
 int				is_metachar(char c);
 int				is_single_quote(char c);
 int				is_double_quote(char c);
-int				strlen_double_ptr(char **str);
 
 // syntax.c
 bool			syntax_check(t_token *token);

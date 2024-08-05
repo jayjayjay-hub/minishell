@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:28:54 by kosnakam          #+#    #+#             */
-/*   Updated: 2024/07/24 15:03:03 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:06:15 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,4 @@ int	is_single_quote(char c)
 int	is_double_quote(char c)
 {
 	return (c && c == '\"');
-}
-
-int	strlen_double_ptr(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
 }

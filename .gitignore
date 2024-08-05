@@ -1,9 +1,16 @@
-# not ignore
+# 実行ファイルやオブジェクトファイルを無視する
+libft.a
+minishell
+.obj/
+libft/.obj/
+libft/*.a
+.vscode/
 
+# not ignore
 !include/*
 !srcs/*
-Makefile
+!Makefile
 !libft/*
 
-# Ignore everything in the root except the .gitignore file
-/*
+# pdfファイルを無視する
+*.pdf

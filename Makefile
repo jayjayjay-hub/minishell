@@ -2,7 +2,7 @@
 NAME = minishell
 
 # library name
-LIBFT_NAME = libft
+LIBFT_NAME = libft.a
 LIBFT_DIR = libft/
 
 # include
@@ -26,33 +26,65 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g
 RM = rm -rf
 NORM = norminette
 
-SRC_FILES = main.c token_list.c\
-			tokenizer.c signal.c\
-			error.c redirect.c\
-			parser.c\
-			ats_list.c\
-			child.c pipe.c\
-			variable.c\
-			expansion.c\
-			utils.c\
-			syntax.c\
-			builtin.c\
-			builtin_exit.c\
-			builtin_cd.c\
-			builtin_echo.c\
-			builtin_pwd.c\
-			builtin_export.c\
-			builtin_env.c\
-			builtin_unset.c\
-			free.c\
-			heredoc.c\
-			childset.c\
-			env_list.c\
+BUILTIN_DIR = 	builtin/
+BUILTIN_SRC = 	builtin.c\
+				builtin_exit.c\
+				builtin_cd.c\
+				builtin_echo.c\
+				builtin_pwd.c\
+				builtin_export.c\
+				builtin_env.c\
+				builtin_unset.c
+
+CHILD_DIR =		child/
+CHILD_SRC =		child.c\
+				childset.c
+
+ENV_DIR =	env/
+ENV_SRC =	env_list.c\
 			env_list_utils.c\
 			env_init.c\
-			expansion_utils.c\
-			tokenizer_utils.c\
-			signal_child.c
+			env_utils.c
+
+EXPANSION_DIR =	expansion/
+EXPANSION_SRC =	expansion.c\
+				expansion_utils.c
+
+PARSER_DIR =	parser/
+PARSER_SRC =	parser.c\
+				ats_list.c
+
+PIPE_REDIRECT_DIR =	pipeRedirect/
+PIPE_REDIRECT_SRC =	pipe.c\
+					redirect.c\
+					heredoc.c
+
+SINGNAL_DIR =	signal/
+SINGNAL_SRC =	signal.c\
+				signal_child.c
+
+TOKENISER_DIR =	tokenizer/
+TOKENISER_SRC =	tokenizer.c\
+				token_list.c\
+				tokenizer_utils.c
+
+UTILS_DIR =	utils/
+UTILS_SRC =	utils.c\
+			error.c\
+			syntax.c\
+			free.c
+
+SRC_FILES = main.c
+
+SRC_FILES += $(addprefix $(BUILTIN_DIR), $(BUILTIN_SRC))
+SRC_FILES += $(addprefix $(CHILD_DIR), $(CHILD_SRC))
+SRC_FILES += $(addprefix $(ENV_DIR), $(ENV_SRC))
+SRC_FILES += $(addprefix $(EXPANSION_DIR), $(EXPANSION_SRC))
+SRC_FILES += $(addprefix $(PARSER_DIR), $(PARSER_SRC))
+SRC_FILES += $(addprefix $(PIPE_REDIRECT_DIR), $(PIPE_REDIRECT_SRC))
+SRC_FILES += $(addprefix $(SINGNAL_DIR), $(SINGNAL_SRC))
+SRC_FILES += $(addprefix $(TOKENISER_DIR), $(TOKENISER_SRC))
+SRC_FILES += $(addprefix $(UTILS_DIR), $(UTILS_SRC))
 
 OJB_FILES = $(SRC_FILES:%.c=%.o)
 
@@ -83,6 +115,15 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)$(BUILTIN_DIR)
+	@mkdir $(OBJ_DIR)$(CHILD_DIR)
+	@mkdir $(OBJ_DIR)$(ENV_DIR)
+	@mkdir $(OBJ_DIR)$(EXPANSION_DIR)
+	@mkdir $(OBJ_DIR)$(PARSER_DIR)
+	@mkdir $(OBJ_DIR)$(PIPE_REDIRECT_DIR)
+	@mkdir $(OBJ_DIR)$(SINGNAL_DIR)
+	@mkdir $(OBJ_DIR)$(TOKENISER_DIR)
+	@mkdir $(OBJ_DIR)$(UTILS_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@echo $(Y) "Compiling $<" $(X)

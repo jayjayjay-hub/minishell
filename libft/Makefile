@@ -1,5 +1,5 @@
 # project name
-NAME		= libft
+NAME		= libft.a
 
 # include
 INCLUDE_DIR	= include/
